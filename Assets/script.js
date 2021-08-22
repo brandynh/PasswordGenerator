@@ -22,9 +22,9 @@ function writePassword() {
 
 }
 
-// Constant Object with -
+// Constant Object with strings of potential character sets
 
-const randomFunction = {
+const charSets = {
   lower: 'abcdefghijklmnopqrstuvwxyz',
   upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   number: '1234567890',
@@ -33,6 +33,7 @@ const randomFunction = {
 
 // Generate password function
 function generatePassword() {
+  
 
 }
 
