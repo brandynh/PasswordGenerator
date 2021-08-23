@@ -4,7 +4,10 @@ var generateBtn = document.querySelector("#generate");
 // Array used to hold user defined characters
 var includedChars = [];
 
+// Array for random characters
 var randomPassword = [];
+//Array for user's generated password
+var userPassword = [];
 
 
 // Constant Object containting available character sets
@@ -13,7 +16,7 @@ const charSets = {
   lower: "abcdefghijklmnopqrstuvwxyz",
   upper: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
   number: "1234567890",
-  symbol: "!@#$%^&*(){}[]=<>/,."
+  symbol: "!@#$%^&*(){}[]=<>/."
 }
 
 
@@ -31,6 +34,12 @@ function writePassword() {
 
   passwordText.value = password;
 
+}
+
+// Function used to split included character sets into an array.
+
+function stringToArray (charSetsAttribute) {
+  includedChars += charSetsAttribute.split("");
 }
 
 
@@ -62,48 +71,57 @@ function generatePassword() {
 
     var includeLower = window.confirm("Would you like your password to contain lowercase letters?")
 
-    // If user selects to include lowercase letters split and add into the array includedCharacters
+    // If user selects to include lowercase letters split and add into the array included characters
     if (includeLower) {
       
-      includedChars += charSets.lower.split('');
+      stringToArray(charSets.lower);
     }
 
     var includeUpper = window.confirm("Would you like your password to contain upper letters?")
 
-    // If user selects to include uppercase letters split and add into the array includedCharacters
+    // If user selects to include uppercase letters split and add into the array included characters
     if (includeUpper) {
       
-      includedChars += charSets.upper.split('');
+      stringToArray(charSets.upper);
 
     }
-    // If user selects to include numbers split and add into the array includedCharacters
+    
     var includeNumber = window.confirm("Would you like your password to contain numbers?")
 
-
+    // If user selects to include numbers split and add into the array included characters
     if (includeNumber) {
       
-      includedChars += charSets.number.split('');
+      stringToArray(charSets.number);
 
     }
 
     var includeSymbol = window.confirm("Would you like your password to contain symbols?")
 
-    // If user selects to include symbols split and add into the array includedCharacters
+    // If user selects to include symbols split and add into the array included characters
     if (includeSymbol) {
 
-      includedChars += charSets.symbol.split('');
+      stringToArray(charSets.symbol);
 
     }
 
   } while (!includeLower && !includeUpper && !includeNumber && !includeSymbol);
 
-
+  // For loop using Math random to access a user defined amount of elements within Array 
   for (var i = 0; i < userPassLength; i++) {
-     randomPassword += includedChars[Math.floor(Math.random() * includedChars.length)];
-     
+    
+    // Do while used to create user password using array while ignoring commas
+    do {
+      randomPassword = includedChars[Math.floor(Math.random() * includedChars.length)];
+
+    } while (randomPassword === ',')
+    
+      // Add characters that are not , to user password array
+      userPassword += randomPassword;
+    
 
   }
-
-return randomPassword;
+  
+// returning user password to be written to HTML
+return userPassword;
 
 }
