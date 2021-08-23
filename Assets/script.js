@@ -38,7 +38,7 @@ function writePassword() {
 
 // Function used to split included character sets into an array.
 
-function stringToArray (charSetsAttribute) {
+function splitFun (charSetsAttribute) {
   includedChars += charSetsAttribute.split("");
 }
 
@@ -74,7 +74,7 @@ function generatePassword() {
     // If user selects to include lowercase letters split and add into the array included characters
     if (includeLower) {
       
-      stringToArray(charSets.lower);
+      splitFun(charSets.lower);
     }
 
     var includeUpper = window.confirm("Would you like your password to contain upper letters?")
@@ -82,7 +82,7 @@ function generatePassword() {
     // If user selects to include uppercase letters split and add into the array included characters
     if (includeUpper) {
       
-      stringToArray(charSets.upper);
+      splitFun(charSets.upper);
 
     }
     
@@ -91,7 +91,7 @@ function generatePassword() {
     // If user selects to include numbers split and add into the array included characters
     if (includeNumber) {
       
-      stringToArray(charSets.number);
+      splitFun(charSets.number);
 
     }
 
@@ -100,7 +100,7 @@ function generatePassword() {
     // If user selects to include symbols split and add into the array included characters
     if (includeSymbol) {
 
-      stringToArray(charSets.symbol);
+      splitFun(charSets.symbol);
 
     }
 
