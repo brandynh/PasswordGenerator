@@ -105,7 +105,5 @@ function generatePassword() {
   }
 
 return randomPassword;
-    console.log(includedChars);
-    console.log(randomPassword);
 
 }
